@@ -1,0 +1,47 @@
+def main_menu():
+    print('1. Add flashcards\n2. Practice flashcards\n3. Exit')
+
+def sub_menu():
+    print('1. Add a new flashcard\n2. Exit')
+
+def adding_flashcard():
+    question = input('\nQuestion:\n')
+    answer = input('Answer:\n')
+    new_dic[question] = answer
+    print("")
+
+new_dic = {}
+choice_1 = '1'
+run = 'y'
+
+while True:
+    main_menu()
+    choice = input()
+    if choice == '1':
+        print("")
+        while True:
+            sub_menu()
+            choice_1 = input()
+            if choice_1 == '1':
+                adding_flashcard()
+            elif choice_1 == '2':
+                break
+            else:
+                print(f'{choice_1} is not an option')
+
+    elif choice == '2' and new_dic == {}:
+        print('\nThere is no flashcard to practice!\n')
+    elif choice == '2':
+        for q, a in new_dic.items():
+            print(f'Question: {q}')
+            c = input('Please press "y" to see the answer or press "n" to skip:')
+            if c == "y":
+                print(f'\nAnswer: {a}\n')
+            elif c == 'n':
+                continue
+    elif choice == '3':
+        print('Bye!')
+        exit()
+    else:
+        print(f'{choice} is not an option')
+
